@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fds-backend
+    env: python
+    region: singapore
+    plan: free
+    rootDir: project/backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --preload --workers=2 --threads=2 --timeout=120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.8
